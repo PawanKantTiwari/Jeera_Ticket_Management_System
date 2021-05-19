@@ -1,0 +1,97 @@
+* {
+    outline: none;
+    /* margin: 0px; */
+    padding: 0px;
+}
+
+.total {
+    width: 98vw;
+    height: 97vh;
+    background: gray;
+}
+
+.upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: yellow;
+    height: 15%;
+}
+
+.filters-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 45%;
+    background: white;
+    width: 30%;
+    border-radius: 5px;
+    /* opacity: 0.8; */
+}
+
+.red {
+    background: red;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: green;
+}
+
+.black {
+    background: black;
+}
+
+.box {
+    width: 17%;
+    height: 65%;
+    border-radius: 5px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.function-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: white;
+    height: 40%;
+    width: 15%;
+    border-radius: 5px;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    cursor: pointer;
+}
+
+.add:hover {
+    background: blue;
+    border-radius: 5px;
+}
+
+.delete {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.delete:hover {
+    background: blue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lower {
+    
+    height: 85%;
+}
