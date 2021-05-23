@@ -61,7 +61,7 @@
     justify-content: space-evenly;
     background: white;
     height: 40%;
-    width: 15%;
+    width: 7%;
     border-radius: 5px;
 }
 
@@ -94,8 +94,13 @@
 }
 
 .lower {
-    height: 77%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 78%;
     padding: 2%;
+    overflow: auto;
 }
 
 .modal {
@@ -105,6 +110,7 @@
     position: fixed;
     top: 30%;
     left: 30%;
+    box-shadow: 0px 0px 25px 17px;
 }
 
 .modal-msg {
@@ -127,8 +133,8 @@
 .modal-filter {
     height: 10%;
     width: 70%;
-    opacity: 0.8;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .modal-filter:hover {
@@ -136,20 +142,21 @@
     transition: transform 0.5s ease 0s;
 }
 
-.active-filter{
-    border: 5px solid darkslateblue;
+.active-filter {
+    border: 5px solid darkcyan;
 }
 
 .ticket {
     height: 30%;
     width: 25%;
     background: pink;
+    margin: 1%;
 }
 
 .ticket-color {
     width: 100%;
     height: 10%;
-    background: red;
+    /* background: red; */
 }
 
 .ticket-id {
@@ -159,7 +166,11 @@
 }
 
 .task {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     height: 75%;
     width: 100%;
     background: wheat;
+    word-break: break-all;
 }
