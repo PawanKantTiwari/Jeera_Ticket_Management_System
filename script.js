@@ -3,26 +3,35 @@ let add = document.querySelector(".add");
 let closeOpenedModalBtn = document.querySelector(".delete");
 // console.log(add);
 let lower = document.querySelector(".lower");
+let ticketDelete = document.querySelector(".ticket-delete");
 
 function loadTickets(){
     if(localStorage.getItem("allTickets")){
+        lower.innerHTML = "";
       let allTickets = JSON.parse(localStorage.getItem("allTickets"));
       for(let i=0 ; i<allTickets.length ; i++){
-        let {ticketId , ticketFilter , ticketContent} = allTickets[i];
-  
-        let ticketDiv = document.createElement("div");
-        ticketDiv.classList.add("ticket");
-        // set the html of the ticket wala div !!
-        ticketDiv.innerHTML = ` <div class="ticket-color : ${ticketFilter}"></div>
-        <div class="ticket-id">#${ticketId}</div>
-        <div class="task">${ticketContent}</div>`;
-  
-        // append the ticket on the UI !!!!
-        lower.append(ticketDiv);
-      }
+          let {ticketId , ticketFilter , ticketContent} = allTickets[i];
+          
+          let ticketDiv = document.createElement("div");
+          ticketDiv.classList.add("ticket");
+          // set the html of the ticket wala div !!
+          ticketDiv.innerHTML = ` <div class="ticket-color : ${ticketFilter}"></div>
+          <div class = "ticket-info">
+          <div class="ticket-id">#${ticketId}</div>
+          <div class = "ticket-delete" >
+          <i class="fas fa-trash-alt" id = ${ticketId}></i></div>
+          </div>
+          <div class="task">${ticketContent}</div>`;
+          
+          // append the ticket on the UI !!!!
+          
+          ticketDiv.querySelector(".ticket-delete i").addEventListener("click",handleTicketDelete);
+          lower.append(ticketDiv);
+        }
     }
-  }
-  loadTickets();
+}
+loadTickets();
+
 
 //creating a list of object
 let FilterList = [{name : "red" , color: "#e74c3c"},
@@ -48,6 +57,8 @@ function changeBgrndOnFilterClick(e){
 // adding new modal on the click on "add" 
 add.addEventListener("click",openNewModal);
 closeOpenedModalBtn.addEventListener("click", closeOpenedModal);
+
+
 
 function closeOpenedModal(){
     let isModalPresent = document.querySelector(".modal");
@@ -120,8 +131,13 @@ function openNewModal(){
             let newTicket = document.createElement("div");
             newTicket.classList.add("ticket");
             newTicket.innerHTML = `<div class="ticket-color ${selectedFilter}"></div>
-            <div class="ticket-id">#${ticketId}</div>
+            <div class = "ticket-info">
+                <div class="ticket-id">#${ticketId}</div>
+                <div class = "ticket-delete">
+                    <i class="fas fa-trash-alt" id = ${ticketId}></i></div>
+            </div>
             <div class="task" contenteditable="true">${modalKaText} </div>`
+            newTicket.querySelector(".ticket-delete i").addEventListener("click",handleTicketDelete);
             lower.append(newTicket);
             lower.scrollTop = lower.scrollHeight;
             e.target.parentNode.remove();
@@ -154,4 +170,12 @@ function openNewModal(){
         }
     }
     
-    
+function handleTicketDelete(e){
+    let ticketToBeDeleted = e.target.id;
+    let allTickets = JSON.parse(localStorage.getItem("allTickets"));
+    let filteredTickets = allTickets.filter(function(ticketObject){
+        return ticketObject.ticketId != ticketToBeDeleted;
+    })
+    localStorage.setItem("allTickets" , JSON.stringify(filteredTickets));
+    loadTickets();
+}

@@ -169,10 +169,10 @@
 }
 
 .ticket-id {
-    height: 11%;
+    height: 10%;
     width: 100%;
     font-weight: bolder;
-    margin: 3px;
+    margin: 0px;
 }
 
 .task {
@@ -183,4 +183,20 @@
     width: 100%;
     background: wheat;
     word-break: break-all;
+}
+
+.ticket-info{
+    
+display: flex;
+}
+
+/* ticket-delete-icon */
+.fa-trash-alt:before {
+    content: "\f2ed";
+    margin-right: 10px;
+}
+
+.fa-trash-alt:hover{
+    color: blue;
+    cursor: pointer;
 }
