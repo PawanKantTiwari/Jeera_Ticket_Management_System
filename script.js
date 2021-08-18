@@ -1,5 +1,6 @@
 let filtersDiv = document.querySelectorAll(".filters-div div");
 let add = document.querySelector(".add");
+let closeOpenedModalBtn = document.querySelector(".delete");
 // console.log(add);
 let lower = document.querySelector(".lower");
 
@@ -46,6 +47,18 @@ function changeBgrndOnFilterClick(e){
 
 // adding new modal on the click on "add" 
 add.addEventListener("click",openNewModal);
+closeOpenedModalBtn.addEventListener("click", closeOpenedModal);
+
+function closeOpenedModal(){
+    let isModalPresent = document.querySelector(".modal");
+    if(isModalPresent){
+       document.querySelector(".modal").remove(".modal") ;
+    }
+    else{
+        return;
+    }
+}
+
 //cb Function
 function openNewModal(){
     let isModalPresent = document.querySelector(".modal");
@@ -110,6 +123,7 @@ function openNewModal(){
             <div class="ticket-id">#${ticketId}</div>
             <div class="task" contenteditable="true">${modalKaText} </div>`
             lower.append(newTicket);
+            lower.scrollTop = lower.scrollHeight;
             e.target.parentNode.remove();
             
             if(!localStorage.getItem('allTickets')){
@@ -132,10 +146,10 @@ function openNewModal(){
                 ticketObject.ticketFilter = selectedFilter;
                 ticketObject.ticketContent = modalKaText;
                 allTickets.push(ticketObject);
+
                 
                 localStorage.setItem("allTickets" , JSON.stringify(allTickets));
             }
-            
             selectedFilter = "black";
         }
     }
